@@ -522,6 +522,8 @@ def register_servlets(hs: "HomeServer", http_server: HttpServer) -> None:
     DevicesRestServlet(hs).register(http_server)
     if hs.config.worker.worker_app is None:
         DeviceRestServlet(hs).register(http_server)
-        DehydratedDeviceServlet(hs).register(http_server)
-        DehydratedDeviceV2Servlet(hs).register(http_server)
-        ClaimDehydratedDeviceServlet(hs).register(http_server)
+
+        if hs.config.experimental.msc2697_enabled:
+            DehydratedDeviceServlet(hs).register(http_server)
+            DehydratedDeviceV2Servlet(hs).register(http_server)
+            ClaimDehydratedDeviceServlet(hs).register(http_server)
