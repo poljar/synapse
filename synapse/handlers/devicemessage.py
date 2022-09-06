@@ -327,7 +327,7 @@ class DeviceMessageHandler:
                 raise SynapseError(
                     HTTPStatus.FORBIDDEN,
                     "Can only fetch messages for own device or dehydrated devices",
-                    Codes.UNAUTHORIZED,
+                    Codes.FORBIDDEN,
                 )
 
         since_stream_id = 0
